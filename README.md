@@ -9,9 +9,9 @@ This branch was made so that the json produced would be parsable by serde_json. 
 1. 'null' objects are the same as empty records
 so
 ```
-["get_status_request_v0":{}]
+["get_status_request_v0",{}]
 and
-["get_status_request_v0":null]
+["get_status_request_v0",null]
 ```
 are identical.
 
