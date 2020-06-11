@@ -904,16 +904,17 @@ void check_types() {
     });
 
     auto testWith = [&](auto& abiName) {
-        check_type(context, abiName, "v1", R"(["int8",7])");
-        check_type(context, abiName, "v1", R"(["s1",{"x1":6}])");
-        check_type(context, abiName, "v1", R"(["s2",{"y1":5,"y2":4}])");
+        //TODO - fix when we accept objects... are we can't currently go back&forth
+        check_type(context, abiName, "v1", R"({"int8":7})");
+        check_type(context, abiName, "v1", R"({"s1":{"x1":6}})");
+        check_type(context, abiName, "v1", R"({"s2":{"y1":5,"y2":4}})");
 
         check_type(context, abiName, "s3", R"({})");
         check_type(context, abiName, "s3", R"({"z1":7})");
-        check_type(context, abiName, "s3", R"({"z1":7,"z2":["int8",6]})");
-        check_type(context, abiName, "s3", R"({"z1":7,"z2":["int8",6],"z3":{}})", R"({"z1":7,"z2":["int8",6]})");
-        check_type(context, abiName, "s3", R"({"z1":7,"z2":["int8",6],"z3":{"y1":9}})");
-        check_type(context, abiName, "s3", R"({"z1":7,"z2":["int8",6],"z3":{"y1":9,"y2":10}})");
+        check_type(context, abiName, "s3", R"({"z1":7,"z2":{"int8":6}})");
+        check_type(context, abiName, "s3", R"({"z1":7,"z2":{"int8":6},"z3":{}})", R"({"z1":7,"z2":{"int8":6}})");
+        check_type(context, abiName, "s3", R"({"z1":7,"z2":{"int8":6},"z3":{"y1":9}})");
+        check_type(context, abiName, "s3", R"({"z1":7,"z2":{"int8":6},"z3":{"y1":9,"y2":10}})");
 
         check_type(context, abiName, "s4", R"({})");
         check_type(context, abiName, "s4", R"({"a1":null})");

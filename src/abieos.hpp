@@ -988,7 +988,7 @@ inline void bin_to_json(pseudo_variant*, bin_to_json_state& state, bool allow_ex
         state.stack.push_back({type, allow_extensions});
         if (trace_bin_to_json)
             printf("%*s[ variant\n", int(state.stack.size() * 4), "");
-        return state.writer.write('[');
+        return state.writer.write('{');
     }
     auto& stack_entry = state.stack.back();
     if (++stack_entry.position == 0) {
@@ -998,14 +998,14 @@ inline void bin_to_json(pseudo_variant*, bin_to_json_state& state, bool allow_ex
         eosio::check(index < fields.size(), eosio::convert_stream_error(eosio::stream_error::bad_variant_index));
         auto& f = fields[index];
         to_json(f.name, state.writer);
-        state.writer.write(',');
+        state.writer.write(':');
         // FIXME: allow_extensions should be stack_entry.allow_extensions, so why are we combining them?
         bin_to_json(state, allow_extensions && stack_entry.allow_extensions, f.type, true);
     } else {
         if (trace_bin_to_json)
             printf("%*s]\n", int((state.stack.size()) * 4), "");
         state.stack.pop_back();
-        state.writer.write(']');
+        state.writer.write('}');
     }
 }
 
