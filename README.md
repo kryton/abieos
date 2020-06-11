@@ -7,14 +7,23 @@ Alpha release. Feedback requested.
 ### RUST mods
 This branch was made so that the json produced would be parsable by serde_json. This (so far) relates to do things.
 1. 'null' objects are the same as empty records
-so
+so (using abieos traditoinal format)
 ```
-["get_status_request_v0":{}]
+["get_status_request_v0",{}]
 and
-["get_status_request_v0":null]
+["get_status_request_v0",null]
 ```
 are identical.
 
+2. variants are represented as objects, not arrays when calling {hex,bin}_to_json 
+```
+["get_status_request_v0",{}]
+```
+becomes
+```
+{"get_status_request_v0":{}}
+```
+(NB: incoming json is not affected yet)
 
 ## Packing transactions
 
