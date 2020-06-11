@@ -1,3 +1,6 @@
+# FORK to enable json compatibility with serde_json in rust... 
+The interesting work is on rust_serde_mods branch.
+
 ## abieos
 
 Binary <> JSON conversion using ABIs. Compatible with languages which can interface to C; see [src/abieos.h](src/abieos.h).
