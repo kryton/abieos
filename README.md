@@ -4,6 +4,18 @@ Binary <> JSON conversion using ABIs. Compatible with languages which can interf
 
 Alpha release. Feedback requested.
 
+### RUST mods
+This branch was made so that the json produced would be parsable by serde_json. This (so far) relates to do things.
+1. 'null' objects are the same as empty records
+so
+```
+["get_status_request_v0":{}]
+and
+["get_status_request_v0":null]
+```
+are identical.
+
+
 ## Packing transactions
 
 1. Create a context: `abieos_create`
