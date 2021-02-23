@@ -1,4 +1,4 @@
-#include "../src/abieos.h"
+#include "eosio/abieos.h"
 #include <libgen.h>
 #include <stdbool.h>
 #include <stdio.h>
